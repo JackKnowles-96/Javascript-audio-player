@@ -1,0 +1,136 @@
+body {
+    background-image: url(../Image/Background.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+div.tb {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;  
+    min-width: 100%;  
+    position:fixed;
+    left: 0px;
+    top: 0px;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 26px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #af0000;
+}
+
+div.content {
+    position:absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 8%;
+    width: 70%;
+    height: 75%;
+    border-radius: 25px;
+    border: 5px solid black;
+    background-image: url("../Image/toolbar.png");
+    padding: 20px; 
+}
+
+div.freqan {
+    position:absolute;
+    margin: auto;
+    top: 8%;
+    width: 10%;
+    height: 40%;
+    border-radius: 25px;
+    border: 5px solid black;
+    background-image: url("../Image/toolbar.png");
+    padding: 20px; 
+}
+
+div.rightpanel {
+    position:absolute;
+    margin: auto;
+    top: 8%;
+    right: 0.5%;
+    width: 10%;
+    height: 60%;
+    border-radius: 25px;
+    border: 5px solid black;
+    background-image: url("../Image/toolbar.png");
+    padding: 20px; 
+}
+
+.vid {
+    min-height: 100%;  
+    min-width: 100%;  
+    position:fixed;
+    left: 0px;
+    top: 0px;
+}
+
+div.vis1 {
+    position:absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 27%;
+    background-color: black;
+    color: black;
+    width: 1240px;
+    height: 460px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+div.vis3 {
+    position:absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 27%;
+    background-color: black;
+    color: black;
+    width: 1240px;
+    height: 460px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+volumeloc {
+    position:fixed;
+    left: 43%;
+    top: 1.3%;
+}
+
+volumeloc a {
+    color: white;
+    position:fixed;
+    left: 37%;
+    top: 1.2%;
+}
+
+div.uploadloc {
+    position:fixed;
+    top: 5.1%;
+    visibility: hidden;
+}
+
+div.repeaticon {
+    position:absolute;
+    background-image: url("../Image/Repeat.png");
+    width: 40px;
+    height: 40px;
+    top: 0.3%;
+    left: 53%;
+}

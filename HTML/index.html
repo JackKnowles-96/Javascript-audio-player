@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="Style.css">
+    <script type="text/jscript" src="../JS/Handler.js">                
+    </script>
+    <script type="text/jscript" src="../JS/Javasound.js">                
+    </script>
+    <script type="text/jscript" src="../JS/Visualisation.js">                
+    </script>
+    <script type="text/jscript" src="../JS/Spectrogram.js">                
+    </script>
+    <script type="text/jscript" src="../JS/Filterapply.js">                
+    </script>
+    <script type="text/jscript" src="../JS/Sythesizer.js">                
+    </script>
+</head>
+<body>
+<div class="tb">
+    <div id="uploadbutton">
+  <li><a onclick="showupload()">Upload</a></li>
+    </div>
+    <div id="play">
+  <li><a onclick="playsound(Soundbuffer)">Play</a></li>
+    </div>
+  <li><a onclick="stopsound()">Stop</a></li>
+  <li><a onclick="pausesound()">Pause/Resume</a></li>
+  <li><a onclick="repeat()">Repeat</a></li>
+  <li><a onclick="showmenu()">Menu</a></li>
+  <volumeloc>
+  <a>
+  volume
+  <input type="text" id="volamount" value="100" size="1">
+  </a>
+  <input id="vol" type="range" min="0" max="1" step="0.05" value="1.0" oninput="volsound()"/>
+  </volumeloc>    
+</div>
+
+<div class="uploadloc" id="uploadloc">
+  <input type="file" id="file" name="file[]" multiple/>      
+</div>
+    
+<div class="content" id="freqtimevis">
+    <h2>Freq and Time Visualisation :</h2>
+    <div>
+        Freq visualisation :
+        <select id="viscol">
+            <option value="4">Red</option>
+            <option value="2">Random colors</option>
+            <option value="3">Blue wave</option>
+            <option value="1">Rainbow</option>
+        </select>
+        <br>
+        Time visualisation :
+        <select id="viscol2">
+            <option value="1">Rainbow</option>
+            <option value="2">Random colors</option>
+            <option value="3">Red</option>
+            <option value="4">White</option>
+        </select>
+        </div>
+        <div class="vis1">
+            <canvas id="1stvis" width="1240" height="460"></canvas>
+        </div>
+    </div>
+
+<div class="content" id="spectrovis">
+    <h2>Spectrogram :</h2>
+    <br>
+    Colours:
+    <select id="viscol3">
+        <option value="1">Fire hsl</option>
+        <option value="2">Rainbow hsl</option>
+    </select>
+    <div class="vis3" id="vis3">
+        <canvas id="3rdvis" width="1240" height="460"></canvas>
+    </div>
+</div>
+<div class="freqan" id="primana">
+    <div class="prim" id="primfreq">
+        <h4>Analysis will begin once sound is played</h4>
+    </div>
+</div>
+
+<div class="content" id="menu">
+    <h4>Freq and Time Visualisation</h4>    
+    <input type="button" onclick="showtimeandfreqvis()" value="View">
+    <br>
+    <br>
+    <h4>Spectrogram Visualisation</h4>        
+    <input type="button" onclick="showspect()" value="View">
+    <br>
+    <br>
+    <h4>Frequency Analysis</h4>
+    <input type="button" onclick="showprim()" value="View">
+    <br>
+    <br>
+    <h4>Filter and Synthesizer Menu</h4>
+    <input type="button" onclick="showfilters()" value="View">
+</div>
+    
+<div class="rightpanel" id="filtermenu">
+        <h4>Filters</h4>
+        <select id="filtertypes">
+            <option value="0">Off</option>
+            <option value="1">High Pass</option>
+            <option value="2">Low Pass</option>
+            <option value="3">Band Pass</option>
+            <option value="4">Low shelf</option>
+            <option value="5">High shelf</option>
+        </select>
+        <br>
+        Frequency
+        <input type="text" id="freqamount" value="0" size="2">
+        <br>
+        <input id="filtslider" type="range" min="0" max="2200" step="5" value="0" oninput="filterapplyer()"/> 
+        <br>
+        Gain
+        <input type="text" id="gainamount" value="0" size="1">
+        <br>
+        <input id="filtgainslider" type="range" min="-20" max="20" step="2" value="0" oninput="filterapplyer()"/>
+        <br>
+        <h4>Synthesizer</h4>
+        <br>
+        Synth 1
+        <select id="soundtype1">
+            <option value="0">None</option>
+            <option value="1">Sine</option>
+            <option value="2">square</option>
+            <option value="3">sawtooth</option>
+            <option value="4">triangle</option>
+        </select>
+        <br>
+        <input type="text" id="synth1amount" value="0" size="2" oninput="typebox()">
+        <br>
+        <input id="synth1" type="range" min="-14000" max="14000" step="5" value="0" oninput="sythvaldisplay()"/> 
+        <br>
+        Synth 2
+            <select id="soundtype2">
+            <option value="0">None</option>
+            <option value="1">Sine</option>
+            <option value="2">square</option>
+            <option value="3">sawtooth</option>
+            <option value="4">triangle</option>
+        </select>
+        <br>
+        <input type="text" id="synth2amount" value="0" size="2" oninput="typebox()">
+        <br>
+        <input id="synth2" type="range" min="-14000" max="14000" step="5" value="0"/ oninput="sythvaldisplay()">
+        <br>
+        <input id="syth1id" type="button" onclick="syth1(1)" value="Play 1">
+        <input id="syth2id" type="button" onclick="syth2(1)" value="Play 2">
+        <input type="button" onclick="stopsyth()" value="Stop">
+        <input id="sythpbid" type="button" onclick="playbothsyth()" value="Play Both">
+    </div>
+    <div class="repeaticon" id="repeaticon">
+    </div>
+    <script LANGUAGE="JavaScript">
+        events();
+    </script>
+</body>
+</html>
